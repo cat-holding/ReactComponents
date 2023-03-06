@@ -6,7 +6,6 @@ export function Header() {
     <nav className="nav-top">
       <Link to="/">Главная страница</Link>
       <Link to="/about">О нас и вас</Link>
-      <Link to="/404">Ошибка</Link>
     </nav>
   );
 }

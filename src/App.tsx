@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />}></Route>
         <Route path="/about" element={<AboutPage />}></Route>
-        <Route path="/404" element={<NotFoundPage />}></Route>
+        <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </>
   );
