@@ -1,19 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
-import React from 'react'
+import './App.css';
+import React from 'react';
+import { Header } from './components/Header';
+import { Route, Routes } from 'react-router-dom';
+import { AboutPage } from './components/pages/AboutPage';
+import { MainPage } from './components/pages/MainPage';
+import { NotFoundPage } from './components/pages/NotFoundPage';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div>
-      <p>Стартовая страничка приложения</p>
-      <button onClick={() => setCount((count) => count + 1)}>
-        count is {count}
-      </button>
-    </div>
-  )
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<MainPage />}></Route>
+        <Route path="/about" element={<AboutPage />}></Route>
+        <Route path="/404" element={<NotFoundPage />}></Route>
+      </Routes>
+    </>
+  );
 }
 
-export default App
+export default App;
