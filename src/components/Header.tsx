@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 export function Header() {
   return (
     <nav className="nav-top">
-      <Link to="/">Главная страница</Link>
-      <Link to="/about">О нас и вас</Link>
+      <Link to="/">Main page</Link>
+      <Link to="/about">About page</Link>
     </nav>
   );
 }

@@ -1,5 +1,10 @@
 import React from 'react';
+import { SearchComponent } from './common/SearchComponent';
 
 export function MainPage() {
-  return <div>Основная страничка</div>;
+  return (
+    <div>
+      <SearchComponent />
+    </div>
+  );
 }
