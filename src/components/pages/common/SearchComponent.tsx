@@ -1,24 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import { IHeadInput } from 'components/utils/interfaces';
+import React, { Component } from 'react';
 
-export function SearchComponent() {
-  const [storageSearch, setStorageSearch] = useState<string>(
-    localStorage.getItem('jikSearch') ?? ''
-  );
+type HeadProps = Record<string, never>;
 
-  useEffect(() => {
-    if (storageSearch || storageSearch === '') {
-      localStorage.setItem('jikSearch', storageSearch);
+export class SearchComponent extends Component<HeadProps, IHeadInput> {
+  constructor(props: HeadProps) {
+    super(props);
+    this.state = {
+      searchInput: '',
+    };
+  }
+
+  componentDidMount() {
+    const startInput = localStorage.getItem('jikSearch') ?? '';
+    if (startInput || startInput === '') {
+      this.setState({ searchInput: startInput });
     }
-  }, [storageSearch]);
+  }
 
-  const handleSaveInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setStorageSearch(event.target.value);
+  componentDidUpdate(prevProps: HeadProps, prevState: IHeadInput) {
+    if (this.state.searchInput !== prevState.searchInput) {
+      localStorage.setItem('jikSearch', this.state.searchInput);
+    }
+  }
+
+  handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ searchInput: event.target.value });
   };
 
-  return (
-    <div className="search-bar">
-      <input type="text" value={storageSearch} onChange={handleSaveInput}></input>
-      <button>Search</button>
-    </div>
-  );
+  render() {
+    return (
+      <div className="search-bar">
+        <input type="text" value={this.state.searchInput} onChange={this.handleInputChange}></input>
+        <button>Search</button>
+      </div>
+    );
+  }
 }
