@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-
-type HeadProps = Record<string, never>;
+import { HeadProps } from 'components/utils/type';
 
 export class SearchComponent extends Component {
   constructor(props: HeadProps) {
